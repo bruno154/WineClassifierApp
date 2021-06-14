@@ -1,0 +1,43 @@
+--ofativo
+create table var_ofativo(sku   TEXT,
+						 ofativo  TEXT)
+
+INSERT INTO var_ofativo(sku,ofativo)
+SELECT sku, case 
+                   when ofativo like '%doce%' then 'aroma_doce'  
+				   when ofativo like '%madeira%' then 'aroma_madeirado' 
+				   when ofativo like '%frutado%' then 'aroma_frutado'
+				   when ofativo like '%tabaco%' then 'aroma_tabaco' else 'outros' end as variavel from ficha_tecnica_temp;
+				   
+
+
+
+SELECT sku, ofativo FROM ficha_tecnica_temp
+where ofativo like '%tabaco%';
+
+
+--visual
+create table var_visual(sku   TEXT,
+						 visual  TEXT)
+
+INSERT INTO var_visual(sku,visual)
+SELECT sku, case 
+                   when visual like '%Rubi%' then 'Rubi'  
+				   when visual like '%rubi%' then 'Rubi' 
+				   when visual like '%Amarelo%' then 'Amarelo'
+				   when visual like '%amarelo%' then 'Amarelo'
+				   when visual like '%Rosa%' then 'Rosa' end as variavel from ficha_tecnica_temp;
+                   
+                   
+
+--gustativo
+create table var_gustativo(sku   TEXT,
+						    gustativo  TEXT);
+
+INSERT INTO var_gustativo(sku,gustativo)
+SELECT sku, case 
+                   when gustativo like '%Frutado%' then 'Frutado'  
+				   when gustativo like '%Encorpado%' then 'Encorpado' 
+				   when gustativo like '%Taninos%' then 'Taninos'
+				   when gustativo like '%acidez%' then 'Acidez'
+				   when gustativo like '%Seco%' then 'Seco' else 'outros' end as variavel from ficha_tecnica_temp;
